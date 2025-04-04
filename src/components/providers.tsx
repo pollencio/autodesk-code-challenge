@@ -3,14 +3,14 @@ import { Patient } from "@/lib/types";
 import { ReactNode, useState } from "react";
 
 const PatientsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [patients, setPatients] = useState<Patient[]>([]);
+  const [patients, setPatients] = useState<Patient[] | null>([]);
 
   const addPatient = (patient: Patient) => {
-    setPatients((prev) => [...prev, patient]);
+    setPatients((prev) => (prev ? [...prev, patient] : prev));
   };
 
   return (
-    <PatientsContext.Provider value={{ patients, addPatient }}>
+    <PatientsContext.Provider value={{ patients, addPatient, setPatients }}>
       {children}
     </PatientsContext.Provider>
   );
