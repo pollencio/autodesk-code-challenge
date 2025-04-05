@@ -20,6 +20,7 @@ export function ItemsTable({ Items }: ItemsTableProps) {
   const table = useDataTable({
     columns: itemsColumns,
     data: Items,
+    initialState: { pagination: { pageSize: 10 } },
   });
 
   return (

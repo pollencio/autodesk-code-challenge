@@ -8,3 +8,7 @@ export const APP_ROUTES = {
     details: (id: string) => `/${id}`,
   },
 };
+
+export const API_ROUTES_V2 = {
+  items: "https://api-generator.retool.com/1jy6Ib/items",
+};

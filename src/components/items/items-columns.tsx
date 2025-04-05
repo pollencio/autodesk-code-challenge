@@ -1,6 +1,7 @@
 "use client";
 
 import { Item } from "@/lib/types";
+import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import { Settings } from "lucide-react";
 import { SortableTableHeader } from "../ui/data-table";
@@ -47,6 +48,12 @@ export const itemsColumns: ColumnDef<Item>[] = [
   {
     accessorKey: "sellerName",
     header: "Ball in court",
+    cell: ({ row }) => (
+      <div>
+        <p>{row.getValue("sellerName")}</p>
+        <p className="text-muted-foreground">{row.getValue("category")}</p>
+      </div>
+    ),
     enableHiding: true,
   },
   {
@@ -57,9 +64,14 @@ export const itemsColumns: ColumnDef<Item>[] = [
   {
     accessorKey: "isApproved",
     header: "Responsible",
-    cell: ({ row }) => (
-      <span>{row.getValue("isApproved") ? "Approved" : "Not Approved"}</span>
-    ),
+    cell: ({ row }) => {
+      const isApproved = row.getValue("isApproved");
+      return (
+        <span className={cn("text-red-700", { "text-green-700": isApproved })}>
+          {isApproved ? "Approved" : "Not Approved"}
+        </span>
+      );
+    },
     enableHiding: true,
   },
   {

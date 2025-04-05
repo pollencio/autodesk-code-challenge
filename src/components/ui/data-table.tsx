@@ -100,35 +100,33 @@ export function DataTable<TData>({ table, isLoading }: DataTableProps<TData>) {
           )}
         </TableBody>
       </Table>
-      {!!tableRows?.length && pageSize < table.getRowCount() && (
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-muted-foreground">
-            {!isMobile && "From"} {pageIndex * pageSize + 1} to{" "}
-            {pageSize > table.getRowCount()
-              ? table.getRowCount()
-              : (pageIndex + 1) * pageSize}{" "}
-            of {table.getRowCount()} results.
-          </div>
-          <div className="flex items-center space-x-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}
-            >
-              Previous
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}
-            >
-              Next
-            </Button>
-          </div>
+      <div className="flex items-center justify-between">
+        <div className="text-sm text-muted-foreground">
+          {!isMobile && "Showing"} {pageIndex * pageSize + 1} -{" "}
+          {pageSize > table.getRowCount()
+            ? table.getRowCount()
+            : (pageIndex + 1) * pageSize}{" "}
+          of {table.getRowCount()}.
         </div>
-      )}
+        <div className="flex items-center space-x-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Next
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
