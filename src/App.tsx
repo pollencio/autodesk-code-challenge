@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { useItems } from "./hooks/use-items";
 
 export function App() {
-  const { Items } = useItems();
+  const { items } = useItems();
 
   return (
     <div className="flex flex-1 flex-col h-screen">
@@ -20,7 +20,7 @@ export function App() {
             value="items"
             className="space-y-4 grow flex flex-col flex-1"
           >
-            <ItemsTable Items={Items} />
+            <ItemsTable Items={items} />
           </TabsContent>
           <TabsContent value="packages">Packages page goes here.</TabsContent>
         </Tabs>

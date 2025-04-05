@@ -4,9 +4,9 @@ import { getItems } from "@/services/item.service";
 import { useContext, useEffect } from "react";
 
 type UseItemsValue = {
-  createItem: (Item: Item) => void;
+  createItem: (item: Item) => Promise<{ error?: { message: string } }>;
 
-  Items?: Item[];
+  items?: Item[];
 };
 
 export function useItems(): UseItemsValue {
@@ -16,13 +16,20 @@ export function useItems(): UseItemsValue {
     throw new Error("useItems must be used within a ItemsProvider");
   }
 
-  function createItem(Item: CreateItem) {
+  async function createItem(item: CreateItem) {
+    console.info("Create a new Item ...");
     const newItem: Item = {
-      ...Item,
+      ...item,
       id: crypto.randomUUID(),
     };
 
-    context?.addItem(newItem);
+    if (newItem) {
+      context?.addItem(newItem);
+
+      return {};
+    } else {
+      return { error: { message: "Error creating item" } };
+    }
   }
 
   useEffect(() => {
@@ -30,5 +37,5 @@ export function useItems(): UseItemsValue {
     getItems().then(context.setItems);
   }, [context.setItems]);
 
-  return { Items: context.items, createItem };
+  return { items: context.items, createItem };
 }

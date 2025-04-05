@@ -1,8 +1,9 @@
 import { useDataTable } from "@/hooks/use-data-table";
 import { Item } from "@/lib/types";
-import { ChevronDown, Funnel, Plus, SquareArrowOutUpRight } from "lucide-react";
+import { ChevronDown, Funnel, SquareArrowOutUpRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { DataTable, DataTableSearch } from "../ui/data-table";
+import { CreateItemModal } from "./create-item-modal";
 import { itemsColumns, itemsFilterFn } from "./items-columns";
 
 interface ItemsTableProps {
@@ -20,10 +21,7 @@ export function ItemsTable({ Items }: ItemsTableProps) {
   return (
     <>
       <div className="flex justify-between">
-        <Button>
-          <Plus />
-          Create Item
-        </Button>
+        <CreateItemModal />
         <div className="flex gap-4">
           <Button variant="outline">
             <SquareArrowOutUpRight />

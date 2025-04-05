@@ -170,7 +170,7 @@ export function SortableTableHeader<TData>({
     <Button
       variant="ghost"
       onClick={() => column.toggleSorting()}
-      className="[&_svg]:size-3.5"
+      className="[&_svg]:size-3.5 text-foreground"
     >
       {children}
       {!isSorted && <ArrowDownUp />}
