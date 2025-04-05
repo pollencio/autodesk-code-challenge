@@ -17,12 +17,13 @@ export type Item = {
   rev: number;
   name: string;
   category: string;
+  sellerName: string;
   status: ItemStatus;
   priority: ItemPriority;
-  package: string;
-  sellerName: string;
-  dueDate: Date;
-  isApproved: false;
+
+  package?: string;
+  dueDate?: Date;
+  isApproved?: boolean;
 };
 
 export type CreateItem = Omit<Item, "id">;

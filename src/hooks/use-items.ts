@@ -4,7 +4,7 @@ import { getItems } from "@/services/item.service";
 import { useContext, useEffect } from "react";
 
 type UseItemsValue = {
-  createItem: (item: Item) => Promise<{ error?: { message: string } }>;
+  createItem: (item: CreateItem) => Promise<{ error?: { message: string } }>;
 
   items?: Item[];
 };
