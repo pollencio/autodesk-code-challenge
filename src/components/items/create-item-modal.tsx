@@ -55,12 +55,12 @@ export function CreateItemModal() {
         <Plus />
         Create Item
       </DialogTrigger>
-      <DialogContent className="min-w-[600px]">
+      <DialogContent className="sm:min-w-[600px]">
         <DialogHeader>
           <DialogTitle>Create item</DialogTitle>
           <DialogDescription className="hidden">Create item</DialogDescription>
         </DialogHeader>
-        <ScrollArea className="h-[60vh] p-6 w-full">
+        <ScrollArea className="h-[70vh] p-6 w-full">
           <CreateItemForm form={form} />
         </ScrollArea>
         <DialogFooter>
