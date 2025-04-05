@@ -5,9 +5,10 @@ import {
   flexRender,
   type Table as TTable,
 } from "@tanstack/react-table";
-import { ArrowDownUp, ArrowUpZA } from "lucide-react";
+import { ArrowDownUp, ArrowUpZA, Search } from "lucide-react";
 import { ReactNode, useEffect } from "react";
 import { Button } from "./button";
+import { Input } from "./input";
 import { Skeleton } from "./skeleton";
 import {
   Table,
@@ -127,6 +128,29 @@ export function DataTable<TData>({ table, isLoading }: DataTableProps<TData>) {
           </Button>
         </div>
       </div>
+    </div>
+  );
+}
+
+interface DataTableSearchProps<TData>
+  extends React.ComponentPropsWithoutRef<"input"> {
+  table: TTable<TData>;
+}
+
+export function DataTableSearch<TData>({
+  className,
+  table,
+  ...props
+}: DataTableSearchProps<TData>) {
+  return (
+    <div className="relative flex w-full items-center">
+      <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground size-4" />
+      <Input
+        onChange={(event) => table.setGlobalFilter(String(event.target.value))}
+        className={cn("pl-10 w-72", className)}
+        type="search"
+        {...props}
+      />
     </div>
   );
 }

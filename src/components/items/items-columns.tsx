@@ -2,7 +2,7 @@
 
 import { Item } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, Row } from "@tanstack/react-table";
 import { Settings } from "lucide-react";
 import { SortableTableHeader } from "../ui/data-table";
 
@@ -80,3 +80,17 @@ export const itemsColumns: ColumnDef<Item>[] = [
     enableHiding: false,
   },
 ];
+
+export function itemsFilterFn(
+  row: Row<Item>,
+  columnId: string,
+  filterValue: string,
+) {
+  const item = row.original;
+  const normalizedFilterValue = filterValue.toLowerCase();
+
+  return (
+    item.name.toLowerCase().startsWith(normalizedFilterValue) ||
+    item.sellerName.toLowerCase().startsWith(filterValue)
+  );
+}
