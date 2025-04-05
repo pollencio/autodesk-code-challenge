@@ -88,7 +88,7 @@ export const itemsColumns: ColumnDef<Item>[] = [
 
 export function itemsFilterFn(
   row: Row<Item>,
-  columnId: string,
+  _columnId: string,
   filterValue: string,
 ) {
   const item = row.original;
