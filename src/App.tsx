@@ -20,7 +20,7 @@ export function App() {
             value="items"
             className="space-y-4 grow flex flex-col flex-1"
           >
-            <ItemsTable Items={items} />
+            <ItemsTable items={items} />
           </TabsContent>
           <TabsContent value="packages">Packages page goes here.</TabsContent>
         </Tabs>

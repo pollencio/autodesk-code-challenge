@@ -7,13 +7,13 @@ import { CreateItemModal } from "./create-item-modal";
 import { itemsColumns, itemsFilterFn } from "./items-columns";
 
 interface ItemsTableProps {
-  Items?: Item[];
+  items?: Item[];
 }
 
-export function ItemsTable({ Items }: ItemsTableProps) {
+export function ItemsTable({ items }: ItemsTableProps) {
   const table = useDataTable({
     columns: itemsColumns,
-    data: Items,
+    data: items,
     globalFilterFn: itemsFilterFn,
     initialState: { pagination: { pageSize: 10 } },
   });
@@ -37,7 +37,7 @@ export function ItemsTable({ Items }: ItemsTableProps) {
           </Button>
         </div>
       </div>
-      <DataTable table={table} isLoading={!Items} />
+      <DataTable table={table} isLoading={!items} />
     </>
   );
 }
