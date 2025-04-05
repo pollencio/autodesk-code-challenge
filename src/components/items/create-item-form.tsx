@@ -1,3 +1,4 @@
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from "@/lib/consts";
 import { CreateItemFormType } from "@/lib/schemas";
 import { UseFormReturn } from "react-hook-form";
 import { DateFormField } from "../ui/date-picker";
@@ -8,17 +9,6 @@ import { SelectFormField } from "../ui/select";
 type CreateItemFormProps = {
   form: UseFormReturn<CreateItemFormType>;
 };
-
-const STATUS_OPTIONS = [
-  { label: "Pending", value: "Pending" },
-  { label: "In Progress", value: "In Progress" },
-  { label: "Closed", value: "Closed" },
-];
-const PRIORITY_OPTIONS = [
-  { label: "High", value: "High" },
-  { label: "Medium", value: "Medium" },
-  { label: "Low", value: "Low" },
-];
 
 export function CreateItemForm({ form }: CreateItemFormProps) {
   return (
