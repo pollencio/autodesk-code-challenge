@@ -1,5 +1,3 @@
-"use client";
-
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import {
@@ -21,10 +19,14 @@ import {
 } from "./table";
 
 interface DataTableProps<TData> {
-  table: TTable<TData> & { onRowClick?: (row: TData) => void };
+  table: TTable<TData> & {
+    onRowClick?: (row: TData) => void;
+  };
+
+  isLoading?: boolean;
 }
 
-export function DataTable<TData>({ table }: DataTableProps<TData>) {
+export function DataTable<TData>({ table, isLoading }: DataTableProps<TData>) {
   const isMobile = useIsMobile();
   const tableRows = table.getRowModel().rows;
   const { pageIndex, pageSize } = table.getState().pagination;
@@ -41,8 +43,7 @@ export function DataTable<TData>({ table }: DataTableProps<TData>) {
   }, [isMobile, table]);
 
   // Show loading skeleton
-  // TODO: Add  ´|| data === undefined´ to the conditional
-  if (isMobile === undefined)
+  if (isMobile === undefined || isLoading)
     return (
       <div className="flex flex-1 flex-col grow gap-2 h-full items-end">
         <Skeleton className="size-full" />

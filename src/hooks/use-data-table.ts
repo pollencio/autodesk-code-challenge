@@ -15,22 +15,25 @@ import { useState } from "react";
 
 type UseDataTableProps<TData> = Omit<
   TableOptions<TData>,
+  | "data"
   | "getCoreRowModel"
   | "getPaginationRowModel"
   | "getSortedRowModel"
   | "getFilteredRowModel"
-> & { onRowClick?: (row: TData) => void };
+> & {
+  data?: TData[]; // Made the data prop optional
+  onRowClick?: (row: TData) => void;
+};
 
 export function useDataTable<TData>(props: UseDataTableProps<TData>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
-  const { data, columns, state, initialState, onRowClick, ...options } = props;
+  const { data, state, initialState, onRowClick, ...options } = props;
 
   const table = useReactTable({
     data: data || [],
-    columns: columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
