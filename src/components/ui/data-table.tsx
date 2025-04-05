@@ -94,7 +94,7 @@ export function DataTable<TData>({ table, isLoading }: DataTableProps<TData>) {
                 colSpan={table.getAllColumns().length}
                 className="h-24 text-center"
               >
-                No hay resultados.
+                No results.
               </TableCell>
             </TableRow>
           )}
@@ -103,11 +103,11 @@ export function DataTable<TData>({ table, isLoading }: DataTableProps<TData>) {
       {!!tableRows?.length && pageSize < table.getRowCount() && (
         <div className="flex items-center justify-between">
           <div className="text-sm text-muted-foreground">
-            {!isMobile && "Mostrando del"} {pageIndex * pageSize + 1} al{" "}
+            {!isMobile && "From"} {pageIndex * pageSize + 1} to{" "}
             {pageSize > table.getRowCount()
               ? table.getRowCount()
               : (pageIndex + 1) * pageSize}{" "}
-            de {table.getRowCount()} resultados.
+            of {table.getRowCount()} results.
           </div>
           <div className="flex items-center space-x-2">
             <Button
@@ -116,7 +116,7 @@ export function DataTable<TData>({ table, isLoading }: DataTableProps<TData>) {
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
-              Anterior
+              Previous
             </Button>
             <Button
               variant="outline"
@@ -124,7 +124,7 @@ export function DataTable<TData>({ table, isLoading }: DataTableProps<TData>) {
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
-              Siguiente
+              Next
             </Button>
           </div>
         </div>
