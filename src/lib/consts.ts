@@ -1,10 +1,6 @@
-export const API_ROUTES = {
-  patients: "https://autodesk-code-challenge.free.beeceptor.com/patients",
-};
+import { Sex } from "./types";
 
-export const APP_ROUTES = {
-  patients: {
-    default: `/patients`,
-    details: (id: string) => `/patients/${id}`,
-  },
+export const SEX_LABEL: { [key in Sex]: string } = {
+  M: "Male",
+  F: "Female",
 };

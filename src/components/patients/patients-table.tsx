@@ -12,10 +12,10 @@ interface PatientsTableProps {
 function PatientsCount({ count }: { count?: number }) {
   return (
     <div className="flex gap-2.5 items-center">
-      <CircleUserRound />
+      <CircleUserRound color="oklch(0.554 0.046 257.417)" size={32} />
       <div className="flex gap-1 items-center">
         <h2 className="text-2xl font-semibold">{count ?? "-"}</h2>
-        <span className="text-muted-foreground">pacientes</span>
+        <span className="text-muted-foreground">patients</span>
       </div>
     </div>
   );
@@ -34,7 +34,7 @@ export function PatientsTable({ patients }: PatientsTableProps) {
         <div className="flex gap-4">
           <Button>
             <Plus />
-            Nuevo paciente
+            Create patient
           </Button>
         </div>
       </div>

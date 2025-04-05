@@ -1,5 +1,6 @@
 import { PatientsContext } from "@/lib/contexts";
 import { CreatePatient, Patient } from "@/lib/types";
+import { getPatients } from "@/services/patients.service";
 import { useContext, useEffect } from "react";
 
 type UsePatientsValue = {
@@ -26,7 +27,7 @@ export function usePatients(): UsePatientsValue {
 
   useEffect(() => {
     console.info("Fetching patients ...");
-    // getPatients().then(context.setPatients);
+    getPatients().then(context.setPatients);
   }, [context.setPatients]);
 
   return { patients: context.patients, createPatient };

@@ -34,6 +34,7 @@ export type Patient = {
   fullName: string;
   sex: Sex;
   countryId: string;
+  age: number;
 
   territorialZone?: Zone;
   municipalityId?: string;
