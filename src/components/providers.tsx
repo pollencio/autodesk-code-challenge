@@ -5,8 +5,8 @@ import { ReactNode, useState } from "react";
 const ItemsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [items, setItems] = useState<Item[]>();
 
-  const addItem = (Item: Item) => {
-    setItems((prev) => (prev ? [...prev, Item] : prev));
+  const addItem = (item: Item) => {
+    setItems((prev) => (prev && item ? [item, ...prev] : prev));
   };
 
   return (

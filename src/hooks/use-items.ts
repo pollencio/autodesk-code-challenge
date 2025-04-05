@@ -1,6 +1,6 @@
 import { ItemsContext } from "@/lib/contexts";
 import { CreateItem, Item } from "@/lib/types";
-import { getItems } from "@/services/item.service";
+import { getItems, postItem } from "@/services/item.service";
 import { useContext, useEffect } from "react";
 
 type UseItemsValue = {
@@ -17,18 +17,19 @@ export function useItems(): UseItemsValue {
   }
 
   async function createItem(item: CreateItem) {
-    console.info("Create a new Item ...");
+    console.info("Creating a new Item ...");
     const newItem: Item = {
       ...item,
       id: crypto.randomUUID(),
     };
+    const { error } = await postItem(newItem);
 
-    if (newItem) {
+    if (newItem && !error) {
       context?.addItem(newItem);
 
-      return {};
+      return { data: newItem };
     } else {
-      return { error: { message: "Error creating item" } };
+      return { error };
     }
   }
 

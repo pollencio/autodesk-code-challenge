@@ -40,6 +40,7 @@ export type CreateItemFormType = z.infer<typeof createItemFormSchema>;
 export const createItemFormOptions: UseFormProps<CreateItemFormType> = {
   resolver: zodResolver(createItemFormSchema),
   defaultValues: {
+    refNumber: 0,
     rev: 0,
     name: "",
     category: "",

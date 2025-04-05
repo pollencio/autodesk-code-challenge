@@ -3,6 +3,7 @@ import { createItemFormOptions, CreateItemFormType } from "@/lib/schemas";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { Button, buttonVariants } from "../ui/button";
 import {
   Dialog,
@@ -35,15 +36,14 @@ export function CreateItemModal() {
   }
 
   async function onSubmit(data: CreateItemFormType) {
-    console.log("* ~ onSubmit ~ data:", data);
     setIsSubmitting(true);
     const { error } = await createItem(data);
 
     if (error) {
-      // toast.error(error?.message || "Ha ocurrido un error.");
+      toast.error(error?.message || "There was an error creating the item 🥺");
     } else {
-      // toast.success("El paciente ha sido creado.");
-      // setIsOpen(false);
+      toast.success("Item created successfully! 🙌");
+      setIsOpen(false);
     }
 
     setIsSubmitting(false);
