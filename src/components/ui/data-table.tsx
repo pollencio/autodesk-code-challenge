@@ -47,7 +47,7 @@ export function DataTable<TData>({ table, isLoading }: DataTableProps<TData>) {
   if (isMobile === undefined || isLoading)
     return (
       <div className="flex flex-1 flex-col grow gap-2 h-full items-end">
-        <Skeleton className="size-full" />
+        <Skeleton className="size-full min-h-96" />
         <Skeleton className="h-9 w-96 flex" />
       </div>
     );
