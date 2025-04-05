@@ -11,7 +11,11 @@ export async function getItems() {
       throw new Error("Network response was not ok");
     }
 
-    items = await response.json();
+    items = (await response.json()).map(({ dueDate, ...item }: Item) => ({
+      ...item,
+      ...(dueDate && item.rev > 3 ? { dueDate: new Date(dueDate) } : {}),
+      isApproved: item.rev > 4,
+    }));
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
   }

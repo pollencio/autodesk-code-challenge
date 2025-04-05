@@ -3,6 +3,7 @@
 import { Item } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ColumnDef, Row } from "@tanstack/react-table";
+import { format } from "date-fns";
 import { Settings } from "lucide-react";
 import { SortableTableHeader } from "../ui/data-table";
 
@@ -59,6 +60,10 @@ export const itemsColumns: ColumnDef<Item>[] = [
   {
     accessorKey: "dueDate",
     header: "Due date",
+    cell: ({ row }) => {
+      const dueDate = row.original.dueDate;
+      return <span>{dueDate ? format(dueDate, "PP") : "-"}</span>;
+    },
     enableHiding: true,
   },
   {
