@@ -37,7 +37,6 @@ export const itemsColumns: ColumnDef<Item>[] = [
   {
     accessorKey: "priority",
     header: "Priority",
-    cell: ({ row }) => <span className="ml-4">{row.getValue("priority")}</span>,
     enableHiding: true,
   },
   {
