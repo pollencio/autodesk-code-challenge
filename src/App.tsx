@@ -1,10 +1,12 @@
-import { usePatients } from "./hooks/usePatients";
+import { PatientsTable } from "./components/patients/patients-table";
+import { usePatients } from "./hooks/use-patients";
 
-function App() {
+export function App() {
   const { patients } = usePatients();
-  console.log("* ~ App ~ patients:", patients);
 
-  return <>Holi</>;
+  return (
+    <div className="py-5 px-6 gap-5 h-screen flex flex-1 flex-col">
+      <PatientsTable patients={patients} />
+    </div>
+  );
 }
-
-export default App;
