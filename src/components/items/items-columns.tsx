@@ -1,6 +1,5 @@
 "use client";
 
-import { SEX_LABEL } from "@/lib/consts";
 import { Item } from "@/lib/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { Settings } from "lucide-react";
@@ -8,60 +7,60 @@ import { SortableTableHeader } from "../ui/data-table";
 
 export const itemsColumns: ColumnDef<Item>[] = [
   {
-    accessorKey: "fullName",
+    accessorKey: "status",
     header: ({ column }) => (
-      <SortableTableHeader column={column}>Full name</SortableTableHeader>
+      <SortableTableHeader column={column}>Status</SortableTableHeader>
     ),
-    cell: ({ row }) => <span className="ml-4">{row.getValue("fullName")}</span>,
+    cell: ({ row }) => <span className="ml-4">{row.getValue("status")}</span>,
     enableHiding: false,
   },
   {
-    accessorKey: "age",
-    header: ({ column }) => (
-      <SortableTableHeader column={column}>Age</SortableTableHeader>
-    ),
-    cell: ({ row }) => <span className="ml-4">{row.getValue("age")}</span>,
+    accessorKey: "refNumber",
+    header: "#",
+    enableHiding: false,
+  },
+  {
+    accessorKey: "rev",
+    header: "Rev",
     enableHiding: true,
   },
   {
-    accessorKey: "sex",
-    header: ({ column }) => (
-      <SortableTableHeader column={column}>Sex</SortableTableHeader>
-    ),
+    accessorKey: "name",
+    header: "Title",
+    enableHiding: true,
+  },
+  {
+    accessorKey: "category",
+    header: "Type",
+    enableHiding: true,
+  },
+  {
+    accessorKey: "priority",
+    header: "Priority",
+    cell: ({ row }) => <span className="ml-4">{row.getValue("priority")}</span>,
+    enableHiding: true,
+  },
+  {
+    accessorKey: "package",
+    header: "Package",
+    enableHiding: true,
+  },
+  {
+    accessorKey: "sellerName",
+    header: "Ball in court",
+    enableHiding: true,
+  },
+  {
+    accessorKey: "dueDate",
+    header: "Due date",
+    enableHiding: true,
+  },
+  {
+    accessorKey: "isApproved",
+    header: "Responsible",
     cell: ({ row }) => (
-      <span className="ml-4">{SEX_LABEL[row.original.sex]}</span>
+      <span>{row.getValue("isApproved") ? "Approved" : "Not Approved"}</span>
     ),
-    enableHiding: true,
-  },
-  {
-    accessorKey: "dniType",
-    header: "DNI type",
-    enableHiding: true,
-  },
-  {
-    accessorKey: "dniNumber",
-    header: "DNI number",
-    enableHiding: true,
-  },
-  {
-    accessorKey: "countryId",
-    header: "Country",
-    enableHiding: true,
-  },
-  {
-    accessorKey: "territorialZone",
-    header: "Zone",
-    cell: ({ row }) => <span className="ml-4">{row.getValue("age")}</span>,
-    enableHiding: true,
-  },
-  {
-    accessorKey: "municipalityId",
-    header: "Municipality",
-    enableHiding: true,
-  },
-  {
-    accessorKey: "originCountryId",
-    header: "Origin country",
     enableHiding: true,
   },
   {

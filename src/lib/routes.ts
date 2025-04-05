@@ -1,5 +1,5 @@
 export const API_ROUTES = {
-  Items: "https://autodesk-code-challenge.free.beeceptor.com/items",
+  items: "https://autodesk-code-challenge.free.beeceptor.com/items",
 };
 
 export const APP_ROUTES = {
