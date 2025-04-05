@@ -1,21 +1,21 @@
-import { PatientsContext } from "@/lib/contexts";
-import { Patient } from "@/lib/types";
+import { ItemsContext } from "@/lib/contexts";
+import { Item } from "@/lib/types";
 import { ReactNode, useState } from "react";
 
-const PatientsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [patients, setPatients] = useState<Patient[]>();
+const ItemsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [items, setItems] = useState<Item[]>();
 
-  const addPatient = (patient: Patient) => {
-    setPatients((prev) => (prev ? [...prev, patient] : prev));
+  const addItem = (Item: Item) => {
+    setItems((prev) => (prev ? [...prev, Item] : prev));
   };
 
   return (
-    <PatientsContext.Provider value={{ patients, addPatient, setPatients }}>
+    <ItemsContext.Provider value={{ items, addItem, setItems }}>
       {children}
-    </PatientsContext.Provider>
+    </ItemsContext.Provider>
   );
 };
 
 export function Providers({ children }: { children: ReactNode }) {
-  return <PatientsProvider>{children}</PatientsProvider>;
+  return <ItemsProvider>{children}</ItemsProvider>;
 }

@@ -1,10 +1,10 @@
 export const API_ROUTES = {
-  patients: "https://autodesk-code-challenge.free.beeceptor.com/patients",
+  Items: "https://autodesk-code-challenge.free.beeceptor.com/items",
 };
 
 export const APP_ROUTES = {
-  patients: {
-    default: `/patients`,
-    details: (id: string) => `/patients/${id}`,
+  items: {
+    default: `/`,
+    details: (id: string) => `/${id}`,
   },
 };

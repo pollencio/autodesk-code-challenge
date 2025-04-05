@@ -1,13 +1,13 @@
 import { createContext } from "react";
-import { Patient } from "./types";
+import { Item } from "./types";
 
-export type PatientsContextValue = {
-  setPatients: (patients: Patient[]) => void;
-  addPatient: (patient: Patient) => void;
+export type ItemsContextValue = {
+  setItems: (Items: Item[]) => void;
+  addItem: (Item: Item) => void;
 
-  patients?: Patient[];
+  items?: Item[];
 };
 
-export const PatientsContext = createContext<PatientsContextValue | undefined>(
+export const ItemsContext = createContext<ItemsContextValue | undefined>(
   undefined,
 );

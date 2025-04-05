@@ -1,30 +1,30 @@
 import { API_ROUTES } from "@/lib/routes";
-import { Patient } from "@/lib/types";
+import { Item } from "@/lib/types";
 import { getAgeFromBirthDate } from "@/lib/utils";
 
-export async function getPatients() {
-  let patients: Patient[] = [];
+export async function getItems() {
+  let Items: Item[] = [];
 
   try {
-    const response = await fetch(API_ROUTES.patients);
+    const response = await fetch(API_ROUTES.Items);
 
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
 
-    patients = (await response.json()).map((patient: Patient) => {
-      const birthDate = new Date(patient.birthDate);
+    Items = (await response.json()).map((Item: Item) => {
+      const birthDate = new Date(Item.birthDate);
 
       return {
-        ...patient,
+        ...Item,
         birthDate,
         age: getAgeFromBirthDate(birthDate),
-        fullName: `${patient.firstName} ${patient.lastName}`,
+        fullName: `${Item.firstName} ${Item.lastName}`,
       };
     });
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
   }
 
-  return patients;
+  return Items;
 }

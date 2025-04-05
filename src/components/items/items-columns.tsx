@@ -1,11 +1,12 @@
 "use client";
 
 import { SEX_LABEL } from "@/lib/consts";
-import { Patient } from "@/lib/types";
+import { Item } from "@/lib/types";
 import { ColumnDef } from "@tanstack/react-table";
+import { Settings } from "lucide-react";
 import { SortableTableHeader } from "../ui/data-table";
 
-export const patientsColumns: ColumnDef<Patient>[] = [
+export const itemsColumns: ColumnDef<Item>[] = [
   {
     accessorKey: "fullName",
     header: ({ column }) => (
@@ -62,5 +63,10 @@ export const patientsColumns: ColumnDef<Patient>[] = [
     accessorKey: "originCountryId",
     header: "Origin country",
     enableHiding: true,
+  },
+  {
+    id: "actions",
+    header: () => <Settings className="text-muted-foreground" />,
+    enableHiding: false,
   },
 ];

@@ -8,7 +8,7 @@ export enum Zone {
   Urban = "URBAN",
 }
 
-export enum PatientDniType {
+export enum ItemDniType {
   AS = "AS",
   CC = "CC",
   CD = "CD",
@@ -24,11 +24,11 @@ export enum PatientDniType {
   TI = "TI",
 }
 
-export type Patient = {
+export type Item = {
   id: string;
   birthDate: Date;
   dniNumber: string;
-  dniType: PatientDniType;
+  dniType: ItemDniType;
   firstName: string;
   lastName: string;
   fullName: string;
@@ -41,4 +41,4 @@ export type Patient = {
   originCountryId?: string;
 };
 
-export type CreatePatient = Omit<Patient, "id">;
+export type CreateItem = Omit<Item, "id">;
