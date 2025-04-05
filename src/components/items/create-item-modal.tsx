@@ -1,3 +1,4 @@
+import { useItems } from "@/hooks/use-items";
 import { createItemFormOptions, CreateItemFormType } from "@/lib/schemas";
 import { Plus } from "lucide-react";
 import { useState } from "react";
@@ -13,12 +14,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { Form } from "../ui/form";
+import { ScrollArea } from "../ui/scroll-area";
+import { CreateItemForm } from "./create-item-form";
 
 export function CreateItemModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // const { createItem } = useItems();
+  const { createItem } = useItems();
   const form = useForm<CreateItemFormType>(createItemFormOptions);
 
   function onOpenChange(value: boolean) {
@@ -35,15 +37,16 @@ export function CreateItemModal() {
   async function onSubmit(data: CreateItemFormType) {
     console.log("* ~ onSubmit ~ data:", data);
     setIsSubmitting(true);
-    // const { error } = await createItem(data);
+    const { error } = await createItem(data);
 
-    // if (error) {
-    //   setIsSubmitting(false);
-    //   // toast.error(error?.message || "Ha ocurrido un error.");
-    // } else {
-    //   // toast.success("El paciente ha sido creado.");
-    //   setIsOpen(false);
-    // }
+    if (error) {
+      // toast.error(error?.message || "Ha ocurrido un error.");
+    } else {
+      // toast.success("El paciente ha sido creado.");
+      // setIsOpen(false);
+    }
+
+    setIsSubmitting(false);
   }
 
   return (
@@ -52,14 +55,14 @@ export function CreateItemModal() {
         <Plus />
         Create Item
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="min-w-[600px]">
         <DialogHeader>
           <DialogTitle>Create item</DialogTitle>
           <DialogDescription className="hidden">Create item</DialogDescription>
         </DialogHeader>
-        <Form {...form}>
-          <form className="p-6"></form>
-        </Form>
+        <ScrollArea className="h-[60vh] p-6 w-full">
+          <CreateItemForm form={form} />
+        </ScrollArea>
         <DialogFooter>
           <DialogClose
             className={buttonVariants({ variant: "ghost" })}
@@ -68,7 +71,6 @@ export function CreateItemModal() {
             Cancel
           </DialogClose>
           <Button
-            type="submit"
             onClick={form.handleSubmit(onSubmit)}
             isLoading={isSubmitting}
           >
