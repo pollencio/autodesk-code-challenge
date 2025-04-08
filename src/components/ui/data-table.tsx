@@ -41,6 +41,7 @@ export function DataTable<TData>({ table, isLoading }: DataTableProps<TData>) {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile]);
 
   // Show loading skeleton

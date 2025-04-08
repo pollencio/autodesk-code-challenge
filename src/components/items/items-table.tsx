@@ -20,7 +20,7 @@ export function ItemsTable({ items }: ItemsTableProps) {
 
   return (
     <>
-      <div className="flex justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:justify-between gap-4">
         <CreateItemModal />
         <div className="flex gap-4">
           <Button variant="outline" className="hidden md:flex">

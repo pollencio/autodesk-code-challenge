@@ -14,12 +14,12 @@ export const itemsColumns: ColumnDef<Item>[] = [
       <SortableTableHeader column={column}>Status</SortableTableHeader>
     ),
     cell: ({ row }) => <span className="ml-4">{row.getValue("status")}</span>,
-    enableHiding: false,
+    enableHiding: true,
   },
   {
     accessorKey: "refNumber",
     header: "#",
-    enableHiding: false,
+    enableHiding: true,
   },
   {
     accessorKey: "rev",
@@ -29,7 +29,7 @@ export const itemsColumns: ColumnDef<Item>[] = [
   {
     accessorKey: "name",
     header: "Title",
-    enableHiding: true,
+    enableHiding: false,
   },
   {
     accessorKey: "category",
@@ -52,10 +52,12 @@ export const itemsColumns: ColumnDef<Item>[] = [
     cell: ({ row }) => (
       <div>
         <p>{row.getValue("sellerName")}</p>
-        <p className="text-muted-foreground">{row.getValue("category")}</p>
+        <p className="text-muted-foreground hidden md:block">
+          {row.getValue("category")}
+        </p>
       </div>
     ),
-    enableHiding: true,
+    enableHiding: false,
   },
   {
     accessorKey: "dueDate",
