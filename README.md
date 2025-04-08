@@ -26,10 +26,10 @@ Run the project with npm
 
 ## Demo
 
-<video controls>
-  <source src="./public/demo.mov" type="video/mov">
-Your browser does not support the video tag.
-</video>
+<figure>
+  <iframe src="./public/demo.mov" frameborder="0" allowfullscreen="true"> 
+  </iframe>
+</figure>
 
 ## Expected results
 
