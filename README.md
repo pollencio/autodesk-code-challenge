@@ -26,7 +26,10 @@ Run the project with npm
 
 ## Demo
 
-<video src="./public/demo.mov">
+<video controls>
+  <source src="./public/demo.mov" type="video/mov">
+Your browser does not support the video tag.
+</video>
 
 ## Expected results
 
