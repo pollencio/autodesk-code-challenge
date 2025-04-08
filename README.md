@@ -26,10 +26,7 @@ Run the project with npm
 
 ## Demo
 
-<figure>
-  <iframe src="./public/demo.mov" frameborder="0" allowfullscreen="true"> 
-  </iframe>
-</figure>
+<img src="./public/demo.gif" />
 
 ## Expected results
 
