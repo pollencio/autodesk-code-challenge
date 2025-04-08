@@ -20,10 +20,10 @@ export function ItemsTable({ items }: ItemsTableProps) {
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-4">
         <CreateItemModal />
         <div className="flex gap-4">
-          <Button variant="outline">
+          <Button variant="outline" className="hidden md:flex">
             <SquareArrowOutUpRight />
             Export
             <ChevronDown />
@@ -32,7 +32,7 @@ export function ItemsTable({ items }: ItemsTableProps) {
             table={table}
             placeholder="Search by title or ball in court"
           />
-          <Button variant="outline" size="icon">
+          <Button variant="outline" size="icon" className="hidden md:flex">
             <Funnel />
           </Button>
         </div>

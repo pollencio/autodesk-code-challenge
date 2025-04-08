@@ -41,7 +41,7 @@ export function DataTable<TData>({ table, isLoading }: DataTableProps<TData>) {
         }
       });
     }
-  }, [isMobile, table]);
+  }, [isMobile]);
 
   // Show loading skeleton
   if (isMobile === undefined || isLoading)
@@ -147,7 +147,7 @@ export function DataTableSearch<TData>({
       <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground size-4" />
       <Input
         onChange={(event) => table.setGlobalFilter(String(event.target.value))}
-        className={cn("pl-10 w-72", className)}
+        className={cn("pl-10 w-full md:w-72", className)}
         type="search"
         {...props}
       />

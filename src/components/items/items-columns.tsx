@@ -82,7 +82,7 @@ export const itemsColumns: ColumnDef<Item>[] = [
   {
     id: "actions",
     header: () => <Settings className="text-muted-foreground" />,
-    enableHiding: false,
+    enableHiding: true,
   },
 ];
 
