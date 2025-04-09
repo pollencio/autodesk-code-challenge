@@ -12,7 +12,7 @@ export function App() {
       </header>
       <main className="py-5 px-6 gap-5 grow flex flex-1 flex-col">
         <Tabs defaultValue="items" className="grow">
-          <TabsList className="hidden md:block">
+          <TabsList className="hidden md:flex">
             <TabsTrigger value="items">Items</TabsTrigger>
             <TabsTrigger value="packages">Packages</TabsTrigger>
           </TabsList>
