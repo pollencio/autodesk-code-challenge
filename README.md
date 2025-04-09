@@ -26,6 +26,8 @@ Run the project with npm
 
 ## Demo
 
+See it in action -> [Demo URL](autodesk-code-challenge.vercel.app)
+
 <img src="./public/demo.gif" />
 
 ## Expected results
